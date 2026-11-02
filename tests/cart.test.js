@@ -33,6 +33,10 @@ describe('hitungTotal', () => {
     expect(() => hitungTotal(items, 'GRATIS')).toThrow('Voucher tidak valid');
   });
 
+  test('voucher MAHASISWA memberi diskon 15%', () => {
+    expect(hitungTotal(items, 'MAHASISWA')).toEqual({ subtotal: 100000, diskon: 15000, total: 85000 });
+  });
+
   test('qty 0 atau negatif ditolak', () => {
     expect(() => hitungTotal([{ nama: 'Buku', harga: 1000, qty: 0 }])).toThrow(/Qty/);
     expect(() => hitungTotal([{ nama: 'Buku', harga: 1000, qty: -2 }])).toThrow(/Qty/);
